@@ -9,4 +9,18 @@
 import Foundation
 
 class calcModel {
+    var lblString: String;
+    
+    init() {
+        lblString = "0";
+    }
+    
+    func appendDigit(digit: String)->String{
+        if (lblString == "0") {
+            lblString = digit;
+        } else {
+            lblString = lblString + digit;
+        }
+        return lblString;
+    }
 }
