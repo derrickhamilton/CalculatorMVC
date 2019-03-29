@@ -138,7 +138,7 @@
                                 <rect key="frame" x="191.5" y="547" width="84" height="112"/>
                                 <state key="normal" title="."/>
                                 <connections>
-                                    <action selector="digitBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TEb-LL-4um"/>
+                                    <action selector="digitBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8cJ-1u-sja"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4n-Ml-Yso">

@@ -18,8 +18,10 @@ class calcModel {
     func appendDigit(digit: String)->String{
         if (lblString == "0") {
             lblString = digit;
+        } else if (digit == "." && lblString.contains(".")) {
+            return lblString
         } else {
-            lblString = lblString + digit;
+            lblString = lblString + digit
         }
         return lblString;
     }
