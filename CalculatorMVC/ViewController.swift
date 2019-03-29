@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var outLabel: UILabel!
-    var myModel: calcModel = calcModel();
+    var myModel: calcModel = calcModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +24,11 @@ class ViewController: UIViewController {
 
     @IBAction func digitBtn(_ sender: UIButton) {
         guard let btnTitle = sender.currentTitle else {
-            return;
+            return
         }
         
-        let newLabel: String = myModel.appendDigit(digit: btnTitle);
-        outLabel.text = newLabel;
+        let newLabel: String = myModel.appendDigit(digit: btnTitle)
+        outLabel.text = newLabel
     }
     
     @IBAction func binOpBtn(_ sender: UIButton) {
@@ -40,7 +40,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func clearBtn(_ sender: UIButton) {
-    
+        let newLabel: String = myModel.clearLabel()
+        outLabel.text = newLabel
     }
     
 }

@@ -23,4 +23,9 @@ class calcModel {
         }
         return lblString;
     }
+    
+    func clearLabel()->String {
+        lblString = "0"
+        return lblString
+    }
 }
