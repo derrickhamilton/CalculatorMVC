@@ -32,7 +32,16 @@ class ViewController: UIViewController {
     }
     
     @IBAction func binOpBtn(_ sender: UIButton) {
-    
+        guard let btnOperator = sender.currentTitle else {
+            return
+        }
+        
+        guard let currValue = outLabel.text else {
+            return
+        }
+        
+        let newLabel: String = myModel.setOperator(op: btnOperator, val: currValue)
+        outLabel.text = newLabel
     }
     
     @IBAction func equalsBtn(_ sender: UIButton) {
