@@ -13,17 +13,23 @@ class calcModel {
     var storedVal: Int
     var storedOp: String?
     var newLblSet: Bool
+    var tempVal: Int
+    var tempOp: String?
     
     init() {
         lblString = "0"
         storedVal = 0
         storedOp = nil
         newLblSet = false
+        tempVal = 0
+        tempOp = nil
     }
     
     func appendDigit(digit: String)->String{
         guard !newLblSet else {
             lblString = "" + digit
+            tempVal = 0
+            tempOp = nil
             newLblSet = false
             return lblString
         }
@@ -56,19 +62,58 @@ class calcModel {
     }
     
     func performOperation(val: String)->String {
+        // Prevent divide by zero errors
+        guard !(storedOp == "/" && val == "0") else {
+            // Reset all values
+            lblString = "0"
+            storedOp = nil
+            storedVal = 0
+            tempOp = nil
+            tempVal = 0
+            newLblSet = false
+            return "Error: Divide by zero"
+        }
+        
+        // Perform operation on consecutive equals presses
+        guard storedOp != nil else {
+            newLblSet = true
+            switch tempOp {
+            case "+":
+                let computed = Int(lblString)! &+ tempVal
+                lblString = "\(computed)"
+            case "-":
+                let computed = Int(lblString)! &- tempVal
+                lblString = "\(computed)"
+            case "*":
+                let computed = Int(lblString)! &* tempVal
+                lblString = "\(computed)"
+            case "/":
+                let computed = Int(lblString)! / tempVal
+                lblString = "\(computed)"
+            default:
+                return lblString
+            }
+            return lblString
+        }
+        
+        // Set the temp value for consecutive equals presses
+        tempVal = Int(val)!
+        tempOp = storedOp
+        
+        // Perform the operation
         switch storedOp {
         case "+":
-            let computed = storedVal + Int(val)!
+            let computed = storedVal &+ Int(val)!
             lblString = "\(computed)"
             storedVal = 0
             storedOp = nil
         case "-":
-            let computed = storedVal - Int(val)!
+            let computed = storedVal &- Int(val)!
             lblString = "\(computed)"
             storedVal = 0
             storedOp = nil
         case "*":
-            let computed = storedVal * Int(val)!
+            let computed = storedVal &* Int(val)!
             lblString = "\(computed)"
             storedVal = 0
             storedOp = nil

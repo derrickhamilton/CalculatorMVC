@@ -45,7 +45,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func equalsBtn(_ sender: UIButton) {
-    
+        guard let currValue = outLabel.text else {
+            return
+        }
+        let newLabel: String = myModel.performOperation(val: currValue)
+        outLabel.text = newLabel
     }
     
     @IBAction func clearBtn(_ sender: UIButton) {
