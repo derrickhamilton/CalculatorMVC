@@ -10,18 +10,18 @@ import Foundation
 
 class calcModel {
     var lblString: String
-    var storedVal: Int
+    var storedVal: Double
     var storedOp: String?
     var newLblSet: Bool
-    var tempVal: Int
+    var tempVal: Double
     var tempOp: String?
     
     init() {
         lblString = "0"
-        storedVal = 0
+        storedVal = 0.0
         storedOp = nil
         newLblSet = false
-        tempVal = 0
+        tempVal = 0.0
         tempOp = nil
     }
     
@@ -47,12 +47,12 @@ class calcModel {
     
     func setOperator(op: String, val: String)->String {
         if (storedVal == 0 && storedOp == nil) {
-            storedVal = Int(val)!
+            storedVal = Double(val)!
             storedOp = op
             newLblSet = true
         } else {
             let result = performOperation(val: val)
-            storedVal = Int(result)!
+            storedVal = Double(result)!
             storedOp = op
             lblString = result
             newLblSet = true
@@ -79,16 +79,16 @@ class calcModel {
             newLblSet = true
             switch tempOp {
             case "+":
-                let computed = Int(lblString)! &+ tempVal
+                let computed = Double(lblString)! + tempVal
                 lblString = "\(computed)"
             case "-":
-                let computed = Int(lblString)! &- tempVal
+                let computed = Double(lblString)! - tempVal
                 lblString = "\(computed)"
             case "*":
-                let computed = Int(lblString)! &* tempVal
+                let computed = Double(lblString)! * tempVal
                 lblString = "\(computed)"
             case "/":
-                let computed = Int(lblString)! / tempVal
+                let computed = Double(lblString)! / tempVal
                 lblString = "\(computed)"
             default:
                 return lblString
@@ -97,28 +97,28 @@ class calcModel {
         }
         
         // Set the temp value for consecutive equals presses
-        tempVal = Int(val)!
+        tempVal = Double(val)!
         tempOp = storedOp
         
         // Perform the operation
         switch storedOp {
         case "+":
-            let computed = storedVal &+ Int(val)!
+            let computed = storedVal + Double(val)!
             lblString = "\(computed)"
             storedVal = 0
             storedOp = nil
         case "-":
-            let computed = storedVal &- Int(val)!
+            let computed = storedVal - Double(val)!
             lblString = "\(computed)"
             storedVal = 0
             storedOp = nil
         case "*":
-            let computed = storedVal &* Int(val)!
+            let computed = storedVal * Double(val)!
             lblString = "\(computed)"
             storedVal = 0
             storedOp = nil
         case "/":
-            let computed = storedVal / Int(val)!
+            let computed = storedVal / Double(val)!
             lblString = "\(computed)"
             storedVal = 0
             storedOp = nil
@@ -129,8 +129,25 @@ class calcModel {
         return lblString
     }
     
+    func negateVal(val: String)->String {
+        let temp = Double(val)!
+        let negate = -temp
+        lblString = "\(negate)"
+        return lblString
+    }
+    
+    func percent(val: String)->String {
+        let computed = Double(lblString)! * 0.01
+        lblString = "\(computed)"
+        return lblString
+    }
+    
     func clearLabel()->String {
         lblString = "0"
+        storedOp = nil
+        storedVal = 0.0
+        tempOp = nil
+        tempVal = 0.0
         return lblString
     }
 }

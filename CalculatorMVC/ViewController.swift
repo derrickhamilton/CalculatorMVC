@@ -52,6 +52,22 @@ class ViewController: UIViewController {
         outLabel.text = newLabel
     }
     
+    @IBAction func negateBtn(_ sender: UIButton) {
+        guard let currValue = outLabel.text else {
+            return
+        }
+        let newLabel: String = myModel.negateVal(val: currValue)
+        outLabel.text = newLabel
+    }
+    
+    @IBAction func percentBtn(_ sender: UIButton) {
+        guard let currValue = outLabel.text else {
+            return
+        }
+        let newLabel: String = myModel.percent(val: currValue)
+        outLabel.text = newLabel
+    }
+    
     @IBAction func clearBtn(_ sender: UIButton) {
         let newLabel: String = myModel.clearLabel()
         outLabel.text = newLabel

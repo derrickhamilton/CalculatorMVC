@@ -28,10 +28,16 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RlG-ic-JxL">
                                 <rect key="frame" x="100" y="68" width="83.5" height="112"/>
                                 <state key="normal" title="+/-"/>
+                                <connections>
+                                    <action selector="negateBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5iW-mA-3RP"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PNn-zi-B4H">
                                 <rect key="frame" x="191.5" y="68" width="84" height="112"/>
                                 <state key="normal" title="%"/>
+                                <connections>
+                                    <action selector="percentBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1U4-Di-W6e"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t9b-0q-BMz">
                                 <rect key="frame" x="283.5" y="68" width="83.5" height="112"/>
