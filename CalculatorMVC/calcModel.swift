@@ -74,9 +74,11 @@ class calcModel {
             return "Error: Divide by zero"
         }
         
+        // To prevent appending digits to computed value
+        newLblSet = true
+        
         // Perform operation on consecutive equals presses
         guard storedOp != nil else {
-            newLblSet = true
             switch tempOp {
             case "+":
                 let computed = Double(lblString)! + tempVal
